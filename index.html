@@ -1,87 +1,502 @@
 <!DOCTYPE html>
-<html lang="ko">
+
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Academic homepage of Taeri Kim, Assistant Professor at Hansung University." name="description"/>
+<title>Taeri Kim</title>
+<style>
+    :root {
+        --ink: #1f2937;
+        --muted: #667085;
+        --line: #e5e7eb;
+        --accent: #244b74;
+        --soft: #f6f8fb;
+        --paper: #ffffff;
+    }
 
-  <title>Taeri Kim</title>
+    * {
+        box-sizing: border-box;
+    }
 
-  <style>
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #222;
-      background: #ffffff;
-      line-height: 1.7;
-    }
-
-    main {
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-
-    h1 {
-      margin-bottom: 8px;
-      font-size: 42px;
-    }
-
-    h2 {
-      margin-top: 48px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #dddddd;
-    }
-
-    .subtitle {
-      color: #666666;
-      font-size: 18px;
+        margin: 0;
+        color: var(--ink);
+        background: var(--soft);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.55;
     }
 
     a {
-      color: #2457c5;
-      text-decoration: none;
+        color: var(--accent);
+        text-decoration: none;
     }
 
     a:hover {
-      text-decoration: underline;
+        text-decoration: underline;
     }
-  </style>
+
+    .page {
+        width: min(1120px, calc(100% - 32px));
+        margin: 32px auto;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: 0 14px 45px rgba(31, 41, 55, 0.08);
+        overflow: visible;
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 36px;
+        padding: 44px 50px 36px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        border-radius: 18px 18px 0 0;
+    }
+
+    .profile-photo {
+        width: 180px;
+        height: 225px;
+        object-fit: cover;
+        object-position: center top;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        box-shadow: 0 10px 24px rgba(31, 41, 55, 0.14);
+        background: #eef2f6;
+    }
+
+    .hero h1 {
+        margin: 4px 0 8px;
+        font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+        line-height: 1.08;
+        letter-spacing: -0.035em;
+    }
+
+    .role {
+        margin: 0 0 12px;
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    .contact {
+        display: grid;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 0.9rem;
+    }
+
+    .updated {
+        margin-top: 18px;
+        color: #98a2b3;
+        font-size: 0.78rem;
+    }
+
+    .layout {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 42px;
+        padding: 36px 50px 56px;
+    }
+
+    nav {
+        position: sticky;
+        top: 24px;
+        align-self: start;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fbfcfe;
+    }
+
+    nav a {
+        display: block;
+        padding: 7px 8px;
+        border-radius: 8px;
+        color: #475467;
+        font-size: 0.85rem;
+    }
+
+    nav a:hover {
+        color: var(--accent);
+        background: #eef3f8;
+        text-decoration: none;
+    }
+
+    main {
+        min-width: 0;
+    }
+
+    .cv-section {
+        scroll-margin-top: 24px;
+        margin-bottom: 38px;
+    }
+
+    .cv-section h2 {
+        margin: 0 0 12px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--accent);
+        color: #1d3550;
+        font-size: 1.22rem;
+        letter-spacing: 0.01em;
+    }
+
+    .cv-section h3 {
+        margin: 22px 0 10px;
+        color: #475467;
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .timeline-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 18px;
+        font-size: 0.94rem;
+    }
+
+    .timeline-row span {
+        color: var(--muted);
+        white-space: nowrap;
+    }
+
+    p {
+        margin: 8px 0;
+    }
+
+    .compact {
+        margin: 2px 0;
+        color: #475467;
+    }
+
+    .entry {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 12px;
+        margin: 0 0 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: #fff;
+    }
+
+    .entry-label {
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 0.85rem;
+    }
+
+    .entry-text {
+        color: #344054;
+        overflow-wrap: anywhere;
+    }
+
+    .bullet-item {
+        position: relative;
+        margin: 9px 0;
+        padding-left: 20px;
+        color: #344054;
+    }
+
+    .bullet-item::before {
+        content: "•";
+        position: absolute;
+        left: 2px;
+        color: var(--accent);
+        font-weight: 800;
+    }
+
+    .compact-list {
+        margin: 0;
+        padding-left: 20px;
+    }
+
+    .compact-list li {
+        margin: 7px 0;
+        color: #344054;
+    }
+
+
+    .activity-group {
+        margin-top: 20px;
+    }
+
+    .activity-label {
+        margin: 14px 0 6px;
+        color: #344054;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    .activity-lines {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .activity-lines li {
+        margin: 6px 0;
+        color: #344054;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+    }
+
+    .tags span {
+        padding: 7px 11px;
+        border: 1px solid #d7e0ea;
+        border-radius: 999px;
+        background: #f8fafc;
+        color: #344054;
+        font-size: 0.85rem;
+    }
+
+
+    .pub-highlight {
+        color: #2f8fc4;
+        font-weight: 700;
+    }
+
+    footer {
+        padding: 24px 56px 34px;
+        border-top: 1px solid var(--line);
+        color: #98a2b3;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 860px) {
+        .hero {
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
+            padding: 36px 28px;
+        }
+
+        .profile-photo {
+            width: 140px;
+            height: 175px;
+        }
+
+        .layout {
+            grid-template-columns: 1fr;
+            padding: 32px 28px 50px;
+        }
+
+        nav {
+            position: static;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+    }
+
+    @media (max-width: 580px) {
+        .page {
+            width: 100%;
+            margin: 0;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .hero {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+
+        .profile-photo {
+            margin: 0 auto;
+        }
+
+        .contact {
+            justify-items: center;
+        }
+
+        .layout {
+            padding: 28px 20px 44px;
+        }
+
+        .timeline-row {
+            display: block;
+        }
+
+        .timeline-row span {
+            display: block;
+            margin-top: 4px;
+        }
+
+        .entry {
+            grid-template-columns: 1fr;
+        }
+
+    
+    .pub-highlight {
+        color: #2f8fc4;
+        font-weight: 700;
+    }
+
+    footer {
+            padding: 22px 20px 30px;
+        }
+    }
+    </style>
 </head>
-
 <body>
-  <main>
-    <h1>Taeri Kim</h1>
+<div class="page">
+<header class="hero">
+<img alt="Portrait of Taeri Kim" class="profile-photo" src="profile.jpg"/>
+<div>
+<h1>Taeri Kim (김태리)</h1>
+<p class="role">Assistant Professor · Division of Computer Engineering · Hansung University</p>
+<div class="contact">
+<span>Room 331, Research Building, Hansung University, Seoul, Republic of Korea 02876</span>
+<span>
+<a href="mailto:taerik@hansung.ac.kr">taerik@hansung.ac.kr</a>
+</span>
+<span>
+<a href="https://scholar.google.com/citations?user=wl8GnDEAAAAJ" rel="noopener noreferrer" target="_blank">Google Scholar</a>
+</span>
+</div>
+<div class="updated">Last Updated: May 16, 2026</div>
+</div>
+</header>
+<div class="layout">
+<nav aria-label="Page navigation"><a href="#research-interests">Research Interests</a><a href="#publications">Publications</a><a href="#experience">Experience</a><a href="#awards">Awards</a><a href="#invited-talks">Invited Talks</a><a href="#activities">Activities</a><a href="#teaching-experience">Teaching Experience</a><a href="#education">Education</a></nav>
+<main>
+<section class="cv-section" id="research-interests">
+<h2>Research Interests</h2>
+<div class="tags">
+<span>Recommender Systems</span>
+<span>Graph-based Learning</span>
+<span>Multimodal Learning</span>
+<span>Deep Learning</span>
+<span>Data Mining</span>
+<span>Artificial Intelligence (AI)</span>
+<span>Medical AI</span>
+</div>
+</section><section class="cv-section" id="publications">
+<h2>Publications (* indicates equal contribution as co-first authors)</h2>
+<h3>Conference Papers</h3>
+<article class="entry publication">
+<div class="entry-label">[C12]</div>
+<div class="entry-text">{Hojung Shin*, <span class="pub-highlight">Taeri Kim*</span>}, Jebum Choi, Hyunjoon Kim, and Sang-Wook Kim, <span class="pub-highlight">“RaceMED: A Race-Aware Approach to Accurate and Fair Medication Recommendation,”</span> In Proceedings of the ACM SIGKDD Conference on Knowledge Discovery and Data Mining (<span class="pub-highlight">KDD</span>) V.2, pp., Jeju Island, Republic of Korea, Aug. 9-13, 2026. (Full paper) (BK21 IF: 4) (Poster)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C11]</div>
+<div class="entry-text">Dong-Hyuk Seo, Sein Kim, <span class="pub-highlight">Taeri Kim</span>, Won-Yong Shin, and Sang-Wook Kim, <span class="pub-highlight">“SCOUT: Structure-Aware Aspect and Anchor-Count Selection for Node Attribute Augmentation via Positional Information,”</span> In Proceedings of the ACM Web Conference (<span class="pub-highlight">WWW</span>), pp. 935-946, Dubai, United Arab Emirates, Apr. 13-17, 2026. (Full paper) (BK21 IF: 4) (Poster)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C10]</div>
+<div class="entry-text"><span class="pub-highlight">Taeri Kim</span>, Sohee Ban, Hyunjoon Kim, and Sang-Wook Kim, <span class="pub-highlight">“STARLINE: Contrastive Learning with Modality-Aware Graph Refinement for Effective Multimedia Recommendation,”</span> In Proceedings of the ACM SIGKDD Conference on Knowledge Discovery and Data Mining (<span class="pub-highlight">KDD</span>) V.2, pp. 1184-1195, Toronto, ON, Canada, Aug. 3-7, 2025. (Full paper) (BK21 IF: 4) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C09]</div>
+<div class="entry-text">Dongho Jeong, <span class="pub-highlight">Taeri Kim</span>, Donghyeon Cho, and Sang-Wook Kim, <span class="pub-highlight">“MELON: Learning Multi-Aspect Modality Preferences for Accurate Multimedia Recommendation,”</span> In Proceedings of the International ACM <span class="pub-highlight">SIGIR</span> Conference on Research and Development in Information Retrieval (<span class="pub-highlight">SIGIR</span>), pp. 1850-1859, Padova, Italy, Jul. 13-18, 2025. (Full paper) (BK21 IF: 4) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C08]</div>
+<div class="entry-text"><span class="pub-highlight">Taeri Kim</span>, Jiho Heo, Hyunjoon Kim, and Sang-Wook Kim, <span class="pub-highlight">“HI-DR: Exploiting Health Status-Aware Attention and an EHR Graph+ for Effective Medication Recommendation,”</span> In Proceedings of the <span class="pub-highlight">AAAI</span> Conference on Artificial Intelligence (<span class="pub-highlight">AAAI</span>), pp. 11950-11958, Philadelphia, Pennsylvania, USA, Feb. 25-Mar. 4, 2025. (Full paper) (BK21 IF: 4) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C07]</div>
+<div class="entry-text">{<span class="pub-highlight">Taeri Kim*</span>, Jiho Heo*, Hongil Kim*}, Kijung Shin, and Sang-Wook Kim, <span class="pub-highlight">“VITA: ‘Carefully Chosen and Weighted Less’ Is Better in Medication Recommendation,”</span> In Proceedings of the <span class="pub-highlight">AAAI</span> Conference on Artificial Intelligence (<span class="pub-highlight">AAAI</span>), pp. 8600-8607, Vancouver, Canada, Feb. 20-27, 2024. (Full paper) (BK21 IF: 4) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C06]</div>
+<div class="entry-text">{Yungi Kim*, <span class="pub-highlight">Taeri Kim*</span>}, Won-Yong Shin, and Sang-Wook Kim, <span class="pub-highlight">“MONET: Modality-Embracing Graph Convolutional Network and Target-Aware Attention for Multimedia Recommendation,”</span> In Proceedings of the ACM International Conference on Web Search and Data Mining (<span class="pub-highlight">WSDM</span>), pp. 332-340, Mérida, México, Mar. 4-8, 2024. (Full paper) (BK21 IF: 3) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C05]</div>
+<div class="entry-text">{<span class="pub-highlight">Taeri Kim*</span>, Noseong Park*}, Jiwon Hong, and Sang-Wook Kim, <span class="pub-highlight">“Phishing URL Detection: A Network-based Approach Robust to Evasion,”</span> In Proceedings of the ACM SIGSAC Conference on Computer and Communications Security (<span class="pub-highlight">CCS</span>), pp. 1769-1782, Los Angeles, USA, Nov. 7-11, 2022. (Full paper) (BK21 IF: 4) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C04]</div>
+<div class="entry-text">{<span class="pub-highlight">Taeri Kim*</span>, Yeon-Chang Lee*}, Kijung Shin, and Sang-Wook Kim, <span class="pub-highlight">“MARIO: Modality-Aware Attention and Modality-Preserving Decoders for Multimedia Recommendation,”</span> In Proceedings of the ACM International Conference on Information and Knowledge Management (<span class="pub-highlight">CIKM</span>), pp. 993-1002, Atlanta, Georgia, USA, Oct. 17-21, 2022. (Full paper) (BK21 IF: 3) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C03]</div>
+<div class="entry-text">{Taeyong Kong*, <span class="pub-highlight">Taeri Kim*</span>}, Jinsung Jeon, Jeongwhan Choi, Yeon-Chang Lee, Noseong Park, and Sang-Wook Kim, <span class="pub-highlight">“Linear, or Non-Linear, That is the Question!,”</span> In Proceedings of the ACM International Conference on Web Search and Data Mining (<span class="pub-highlight">WSDM</span>), pp. 517-525, Virtual Event, Tempe, Arizona, USA, Feb. 21-25, 2022. (Full paper) (BK21 IF: 3) (Oral)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C02]</div>
+<div class="entry-text">Sung-Jun Park, Jiwon Hong, <span class="pub-highlight">Taeri Kim</span>, and Sang-Wook Kim, <span class="pub-highlight">“Malware Classification: Methods and Evaluation,”</span> In Proceedings of the International Conference on Convergence Content (<span class="pub-highlight">ICCC</span>), pp. 267-268, Johor, Malaysia, Dec. 19-21, 2019. (Short paper) (Best Paper Award)</div>
+</article>
+<article class="entry publication">
+<div class="entry-label">[C01]</div>
+<div class="entry-text">Jiwon Hong, Sung-Jun Park, <span class="pub-highlight">Taeri Kim</span>, Yung-Kyun Noh, and Sang-Wook Kim, <span class="pub-highlight">“Malware Classification for Identifying Author Groups: A Graph-based Approach,”</span> In Proceedings of the Conference on Research in Adaptive and Convergent Systems (<span class="pub-highlight">RACS</span>), pp. 169-174, Chongqing, China, Sep. 24-27, 2019. (Full paper)</div>
+</article>
+<h3>Journal Papers</h3>
+<article class="entry publication">
+<div class="entry-label">[J01]</div>
+<div class="entry-text">{Jiyeon Kim*, <span class="pub-highlight">Taeri Kim*</span>}, and Sang-Wook Kim, <span class="pub-highlight">“Read between the interactions: Understanding non-interacted items for accurate multimedia recommendation,”</span> Computer Science and Information Systems, Vol. 20(3), pp. 933-948, Jun. 2023. (2023 JCR IF: 1.2)</div>
+</article>
+<h3>Book Chapters</h3><article class="entry publication">
+<div class="entry-label">[B01]</div>
+<div class="entry-text">“Phishing URL Detection with Lexical Features and Blacklisted Domains,” Adaptive Autonomous Secure Cyber Systems 2020 (Chapter 12), pp. 253-267, Springer, 2020.</div>
+</article></section><section class="cv-section" id="experience">
+<h2>Experience</h2>
+<div class="timeline-row">
+<strong>Assistant Professor</strong>
+<span>Mar. 2026 –</span>
+</div>
+<p class="compact">Division of Computer Engineering, Hansung University, Seoul, Republic of Korea</p>
+<div class="timeline-row">
+<strong>Postdoctoral Researcher</strong>
+<span>Mar. 2025 – Feb. 2026</span>
+</div>
+<p class="compact">Hanyang University, Seoul, Republic of Korea</p>
+</section><section class="cv-section" id="awards">
+<h2>Awards</h2>
+<ul class="compact-list"><li>Feb. 2025, 2024 Best Ph.D. Dissertation Award, Research Institute of Industrial Science, Hanyang University</li><li>May 2024, Best Paper Award, Annual Symposium of KIPS 2024 (ASK 2024)</li><li>Dec. 2022, Ph.D. Fellowship Award, Naver Corporation</li><li>Feb. 2020, 2019 Best Paper Award, International Conference on Convergence Content (ICCC 2019)</li><li>Aug. 2019, Best Presentation Award, Korea Computer Congress 2019 (KCC 2019)</li><li>Aug. 2015, President’s Award for Outstanding Academic Performance, Hansung University</li></ul></section><section class="cv-section" id="invited-talks">
+<h2>Invited Talks</h2>
+<ul class="compact-list"><li>Apr. 2026, New Faculty Session, 2026 Korea Society for Smart Media Spring Conference (KISM 2026 Spring Conference)</li><li>Jun. 2024, Top Conference Session, Korea Computer Congress 2024 (KCC 2024)</li><li>Dec. 2023, Top Conference Session, Korea Software Congress 2023 (KSC 2023)</li><li>Aug. 2023, Distinguished Research Session, Samsung Security Tech Forum (SSTF 2023)</li><li>Dec. 2022, Top Conference Session, Korea Software Congress 2022 (KSC 2022)</li></ul></section><section class="cv-section" id="activities">
 
-    <p class="subtitle">
-      Assistant Professor at Hansung University
-    </p>
-
-    <h2>About Me</h2>
-
-    <p>
-      I am an assistant professor in the Department of Computer Engineering
-      at Hansung University.
-    </p>
-
-    <h2>Research Interests</h2>
-
-    <p>
-      Recommender Systems, Social Recommendation,
-      Multimedia Recommendation, and Healthcare AI
-    </p>
-
-    <h2>Publications</h2>
-
-    <p>
-      Publications will be updated soon.
-    </p>
-
-    <h2>Contact</h2>
-
-    <p>
-      Email:
-      <a href="mailto:taerik@daum.net">taerik@daum.net</a>
-    </p>
-  </main>
+<h2>Activities</h2><h3>Program Committee</h3><p class="activity-label">Vice-Chair</p><ul class="activity-lines"><li>ACM SAC 2026 (SONAMA Track)</li></ul><p class="activity-label">Member</p><ul class="activity-lines"><li>ACM CIKM 2026, 2025</li><li>AAAI 2026</li><li>ACM SAC 2025, 2024</li></ul><h3>Reviewing</h3><p class="activity-label">Conference</p><ul class="activity-lines"><li>ACM SIGIR 2026, 2024</li><li>IEEE ICDM 2025, 2024, 2023</li><li>ACM WWW 2026, 2024</li></ul><p class="activity-label">Journal</p><ul class="activity-lines"><li>Information Fusion</li><li>IEEE Transactions on Knowledge and Data Engineering</li><li>IEEE Transactions on Multimedia</li><li>Engineering Applications of Artificial Intelligence</li><li>Knowledge-Based Systems</li><li>Information Processing and Management</li><li>Information Sciences</li><li>ACM Transactions on Information Systems</li><li>Big Data Research</li><li>Expert Systems With Applications</li><li>Advanced Engineering Informatics</li><li>The Journal of Supercomputing</li></ul></section><section class="cv-section" id="teaching-experience">
+<h2>Teaching Experience</h2>
+<h3>Teaching</h3>
+<p>V024008: Web Engineering Capstone Design @ Hansung University 2026</p>
+<p>V024004: Web Server Programming @ Hansung University 2026</p>
+<p>V020014: Operating System @ Hansung University 2026</p>
+<p>V020006: Probability and Statistics @ Hansung University 2026</p>
+<h3>Teaching Assistant</h3>
+<p>SKT AI Course: Recommender Systems @ SK Telecom 2021</p>
+<p>ITE4005: Data Science @ Hanyang University 2020, 2019, 2018</p>
+<p>ITE2038: Database Systems @ Hanyang University 2020, 2019, 2018, 2017</p>
+<h3>Tutoring</h3>
+<p>MME0017: Object-Oriented Programming @ Hansung University 2014</p>
+<p>MME0050: JAVA Programming @ Hansung University 2014, 2013</p>
+</section><section class="cv-section" id="education">
+<h2>Education</h2>
+<div class="timeline-row">
+<strong>Ph.D. in Computer Science</strong>
+<span>Mar. 2017 – Feb. 2025</span>
+</div>
+<p class="compact">Hanyang University, Seoul, Republic of Korea</p>
+<p class="compact">Dissertation: Effective Approaches to Exploiting Multimodal Features for Accurate Recommendation (Best Ph.D. Dissertation Award)</p>
+<p class="compact">Advisor: Prof. Sang-Wook Kim</p>
+<div class="timeline-row">
+<strong>B.S. in Computer Science (Multimedia Engineering)</strong>
+<span>Mar. 2012 – Aug. 2015</span>
+</div>
+<p class="compact">Hansung University, Seoul, Republic of Korea</p>
+<p class="compact">(President’s Award for Outstanding Academic Performance)</p>
+</section></main>
+</div>
+<footer>
+              © 2026 Taeri Kim
+            </footer>
+</div>
 </body>
 </html>
